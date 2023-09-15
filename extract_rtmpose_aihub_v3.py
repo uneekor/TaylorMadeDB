@@ -125,8 +125,8 @@ def main(args):
     # 동영상 파일을 읽어서, 좌표 뽑고, json으로 저장하기
     # print(os.listdir(args.in_dir))
     dir_list = os.listdir(args.in_dir)
-    dir_list = [item for item in dir_list if not item.startswith(".")]
-    dir_list = sorted(dir_list, key=lambda x: int(os.path.splitext(x)[0]))
+    # dir_list = [item for item in dir_list if not item.startswith(".")]
+    # dir_list = sorted(dir_list, key=lambda x: int(os.path.splitext(x)[0]))
 
     for file_name in tqdm(dir_list):
         # youtube_id = os.path.splitext(os.path.basename(file_name))[0].split('_')[0]
