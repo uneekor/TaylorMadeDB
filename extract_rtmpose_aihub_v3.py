@@ -81,7 +81,7 @@ def read_inference_write(video_full_path, hpe_model, meta):
 
     shot_meta['club'] = str(shot.club.values[0])
     shot_meta['poses'] = poses
-    shot_meta['events'] = [int(e) for e in list(shot.events.values[0])]
+    shot_meta['events'] = [int(e) for e in list(shot.events.values[0].split(' '))]
     shot_meta['total_frames'] = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     for frame_id in range(int(cap.get(cv2.CAP_PROP_FRAME_COUNT))):
@@ -91,7 +91,7 @@ def read_inference_write(video_full_path, hpe_model, meta):
             pose_results, _, bbox_club = hpe_model.pose_estimate(frame)
             # print(pose_results)
             if len(bbox_club) > 0:
-            # 클럽 박스 구석 4개중 손목가 가장 거리가 먼점을 리스트로 만든다
+                # 클럽 박스 구석 4개중 손목가 가장 거리가 먼점을 리스트로 만든다
                 club_head = find_farthest_point(pose_results.keypoints[0].tolist()[7], bbox_club[0])
             else:
                 club_head = []
