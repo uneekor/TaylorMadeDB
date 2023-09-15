@@ -19,6 +19,26 @@ python crop.py \
 --output_path ./TMMade.stereo
 ```
 
+```shell
+python crop.py \
+--input_path ./TMMade.youtube/Jlp8G9paliw.mp4 \
+--crop_ratio 0.62 \
+--output_path ./TMMade.stereo
+```
+
+```shell
+python crop.py \
+--input_path ./TMMade.youtube/02imCuJAZCw.mp4 \
+--crop_ratio 0.59 \
+--output_path ./TMMade.stereo
+```
+
+```shell
+python crop.py \
+--input_path ./TMMade.youtube \
+--output_path ./TMMade.stereo
+```
+
 
 ```shell
 python extract_rtmpose_aihub_v3.py \

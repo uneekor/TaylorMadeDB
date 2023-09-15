@@ -125,21 +125,12 @@ def main(args):
     # 동영상 파일을 읽어서, 좌표 뽑고, json으로 저장하기
     # print(os.listdir(args.in_dir))
     dir_list = os.listdir(args.in_dir)
-    # dir_list = [item for item in dir_list if not item.startswith(".")]
+    dir_list = [item for item in dir_list if item.endswith(".mp4")]
     # dir_list = sorted(dir_list, key=lambda x: int(os.path.splitext(x)[0]))
 
     for file_name in tqdm(dir_list):
-        # youtube_id = os.path.splitext(os.path.basename(file_name))[0].split('_')[0]
-        # view_type = os.path.splitext(os.path.basename(file_name))[0].split('_')[1]
-
-        # golfdb_shot = meta[meta['youtube_id'] == youtube_id]
-        # name = str(golfdb_shot.name.values[0]).replace(" ", "_")
-
-        if file_name.endswith(".mp4"):
-            full_path = os.path.join(args.in_dir, file_name)
-            read_inference_write(full_path, rtmpose_model, meta)
-            # break
-
+        full_path = os.path.join(args.in_dir, file_name)
+        read_inference_write(full_path, rtmpose_model, meta)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="extract hpe")
