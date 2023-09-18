@@ -130,6 +130,9 @@ def main(args):
 
     for file_name in tqdm(dir_list):
         full_path = os.path.join(args.in_dir, file_name)
+        filename_except_ext = os.path.splitext(os.path.basename(full_path))[0]
+        if os.path.exists(os.path.join(args.in_dir, f"{filename_except_ext}.json")):
+            continue
         read_inference_write(full_path, rtmpose_model, meta)
 
 if __name__ == "__main__":
